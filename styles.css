@@ -1,0 +1,42 @@
+#defaultCanvas0{
+    margin:0;
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:-1;
+}
+
+.artButton{
+    font-family: ice-cream-slant,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    -webkit-text-stroke: 1px white;
+    color: #EB9DAC;
+    background: transparent;
+    border: none;
+    font-size:4vw;
+    transition: 200ms;
+}
+
+.artButton:hover{
+    transform: scale(1.1);
+}
+
+#buttonRow{
+    position:fixed;
+    display:flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 10vh;
+    margin:0;
+    left:0;
+    top: 1vh;
+    z-index:1;
+}
+
+#body{
+    position:fixed;
+    height:90vh;
+    width:100vw;
+    z-index:0;
+}
