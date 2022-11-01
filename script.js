@@ -7,7 +7,13 @@ let ladyFinger;
 let reesesCup;
 let mincePie;
 let wafer;
-let castleArray = [];
+let castleArray;
+if (checkCookie("castleCookie")) {
+    castleArray = getCookie("castleCookie");
+    console.log(castleArray);
+} else {
+    castleArray = [];
+};
 
 function preload() {
     ladyFinger = loadImage("ladyFinger.png");
@@ -37,7 +43,7 @@ function windowResized() {
 
 body.onclick = function placeImage() {
     image(imageID, mouseX, mouseY);
-    let obj = {piece: imageID.valueOf(), xPos: mouseX, yPos: mouseY};
+    let obj = {piece: imageObj, xPos: mouseX, yPos: mouseY};
     castleArray.push(obj);
     setCookie("castleCookie", castleArray, 999);
     console.log(castleArray);
@@ -45,10 +51,15 @@ body.onclick = function placeImage() {
 
 turret.onclick = function() {
     turret.style.textShadow = "0px 0px 10px white";
+    turret.style.transform = "scale(1.1)";
+    roseWindow.style.transform = "";
+    wall.style.transform = "";
+    tower.style.transform = "";
     roseWindow.style.textShadow = "0px 0px 0px";
     wall.style.textShadow = "0px 0px 0px";
     tower.style.textShadow = "0px 0px 0px";
     imageID = reesesCup;
+    imageObj = "reesesCup.png";
 };
 
 roseWindow.onclick = function() {
@@ -56,7 +67,12 @@ roseWindow.onclick = function() {
     roseWindow.style.textShadow = "0px 0px 10px white";
     wall.style.textShadow = "0px 0px 0px";
     tower.style.textShadow = "0px 0px 0px";
+    turret.style.transform = "";
+    roseWindow.style.transform = "scale(1.1)";
+    wall.style.transform = "";
+    tower.style.transform = "";
     imageID = mincePie;
+    imageObj = "mincePie.png";
 };
 
 tower.onclick = function() {
@@ -64,7 +80,12 @@ tower.onclick = function() {
     roseWindow.style.textShadow = "0px 0px 0px";
     wall.style.textShadow = "0px 0px 0px";
     tower.style.textShadow = "0px 0px 10px white";
+    turret.style.transform = "";
+    roseWindow.style.transform = "";
+    wall.style.transform = "";
+    tower.style.transform = "scale(1.1)";
     imageID = ladyFinger;
+    imageObj = "ladyFinger.png";
 };
 
 wall.onclick = function() {
@@ -72,7 +93,12 @@ wall.onclick = function() {
     roseWindow.style.textShadow = "0px 0px 0px";
     wall.style.textShadow ="0px 0px 10px white";
     tower.style.textShadow = "0px 0px 0px";
+    turret.style.transform = "";
+    roseWindow.style.transform = "";
+    wall.style.transform = "scale(1.1)";
+    tower.style.transform = "";
     imageID = wafer;
+    imageObj = "wafer.png";
 };
 
 function setCookie(cname, cvalue, exdays) {
@@ -105,5 +131,13 @@ const deleteAllCookies = () => {
       const eqPos = cookie.indexOf("=");
       const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+};
+
+function checkCookie(cname) {
+    if (!getCookie(cname) === undefined) {
+        return true;
+    } else {
+        return false;
     }
 };
