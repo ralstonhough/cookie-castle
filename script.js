@@ -3,6 +3,7 @@ let roseWindow = document.getElementById("roseWindow");
 let wall = document.getElementById("wall");
 let tower = document.getElementById("tower");
 let imageID;
+let imageObj;
 let ladyFinger;
 let reesesCup;
 let mincePie;
