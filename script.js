@@ -11,9 +11,10 @@ let wafer;
 let castleArray;
 if (checkCookie("castleCookie")) {
     castleArray = getCookie("castleCookie");
-    console.log(castleArray);
+    console.log("There's a coookie here");
 } else {
     castleArray = [];
+    console.log("There is no cookie");
 };
 
 function preload() {
